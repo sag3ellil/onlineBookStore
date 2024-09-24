@@ -1,0 +1,250 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Login/Register Styles */
+.login-container, .register-container {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.login-container h2, .register-container h2 {
+  margin-bottom: 20px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+input::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+input:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Book List Styles */
+.book-list-container {
+  padding: 20px;
+}
+
+.book-item {
+  margin-bottom: 20px;
+}
+
+.book-item button {
+  background-color: #28a745;
+}
+
+.book-item button:hover {
+  background-color: #218838;
+}
+
+/* Cart Styles */
+.cart-container {
+  padding: 20px;
+}
+
+/**********/
+
+/* Style for the header */
+header {
+  background-color: #f8f9fa; /* Light background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 10px 20px; /* Padding around the header */
+  position: fixed; /* Make the header fixed at the top */
+  top: 0; /* Align to the top */
+  left: 0;
+  width: 100%; /* Ensure the header takes full width */
+  z-index: 1000; /* Make sure it's above other content */
+}
+
+/* Style for the nav */
+nav {
+  display: flex;
+  justify-content: space-between; /* Align left and right items */
+  align-items: center;
+}
+
+/* Links inside the nav */
+nav a {
+  text-decoration: none;
+  color: #333; /* Darker text color */
+  margin: 0 40px; /* Spacing between links */
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  color: #007bff; /* Highlight on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Span for the username */
+nav span {
+  margin-right: 15px;
+  font-size: 1rem;
+  color: #555; /* Grey color for welcome text */
+}
+
+/* Add padding to body content to prevent overlap with the header */
+body {
+  padding-top: 60px; /* Adjust this value based on the header height */
+}
+
+
+/* Button for logout */
+button {
+  background-color: #dc3545; /* Red button */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Stack items on small screens */
+    text-align: center;
+  }
+
+  nav a {
+    margin: 10px 0; /* Adjust spacing for small screens */
+  }
+
+  button {
+    margin-top: 10px;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.pagination-info {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  width:9cm;
+ 
+}
+
+.pagination-btn {
+  background-color: #4c87af;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-btn:disabled {
+  background-color: #ddd;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #4546a0;
+}
+
+.pagination-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(72, 191, 71, 0.5);
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745; /* Success background */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  z-index: 1000;
+}

@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: E-Book Store API
+  version: 1.0.0
+  description: API for managing e-books, orders, and user authentication in an e-book store.
+servers:
+  - url: http://localhost:8080/api/v1
+tags:
+  - name: Books
+    description: Operations related to books
+  - name: Orders
+    description: Operations related to orders
+  - name: Auth
+    description: User authentication and registration
+paths:
+  /books:
+    get:
+      tags:
+        - Books
+      summary: Retrieve a list of all available books
+      operationId: getBooks
+      responses:
+        200:
+          description: A list of books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+  /orders:
+    post:
+      tags:
+        - Orders
+      summary: Create a new order containing selected books
+      operationId: placeOrder
+      requestBody:
+        description: List of books to order and user ID
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+      responses:
+        201:
+          description: Order successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register a new user
+      operationId: registerUser
+      requestBody:
+        description: User registration data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        201:
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: User login
+      operationId: loginUser
+      requestBody:
+        description: Login credentials
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        200:
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: "Java Programming"
+        price:
+          type: number
+          format: double
+          example: 39.99
+        author:
+          type: string
+          example: "John Doe"
+    OrderRequest:
+      type: object
+      properties:
+        books:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+        userId:
+          type: integer
+          example: 1
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        books:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+        totalPrice:
+          type: number
+          format: double
+          example: 79.98
+        userId:
+          type: integer
+          example: 1
+    UserRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          example: "john_doe"
+        password:
+          type: string
+          format: password
+          example: "password123"
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        username:
+          type: string
+          example: "john_doe"
+        password:
+          type: string
+          format: password
+          example: "password123"
